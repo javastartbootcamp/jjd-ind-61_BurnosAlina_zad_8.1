@@ -7,6 +7,24 @@ public class Student {
     private Grade[] grades = new Grade[10];
     private Group[] groups = new Group[10];
 
+    public void printGrades() {
+        for (Grade grade : grades) {
+            if (grade != null && grade.getGrade() != 0) {
+                System.out.println(grade.getGroup().getName() + ": " +
+                        grade.getGrade());
+            }
+        }
+    }
+
+    void addGrade(Grade grade) {
+        for (int i = 0; i < grades.length; i++) {
+            if (grades[i] == null) {
+                grades[i] = grade;
+                break;
+            }
+        }
+    }
+
     Student(int index, String firstName, String lastName) {
         this.index = index;
         this.firstName = firstName;

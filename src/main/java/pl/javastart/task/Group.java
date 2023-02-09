@@ -8,6 +8,33 @@ public class Group {
     private Student[] students = new Student[10];
     private Grade[] grades = new Grade[10];
 
+    void printStudents() {
+        for (Student student : students) {
+            if (student != null) {
+                System.out.println(student.getIndex() + " " + student.getFirstName() + " "
+                        + student.getLastName());
+            }
+        }
+    }
+
+    void addGrade(Grade grade) {
+        for (int i = 0; i < grades.length; i++) {
+            if (grades[i] == null) {
+                grades[i] = grade;
+                break;
+            }
+        }
+    }
+
+    void addStudent(Student student) {
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] == null) {
+                students[i] = student;
+                break;
+            }
+        }
+    }
+
     Group(String code, String name, Lecturer lecturer) {
         this.code = code;
         this.name = name;
