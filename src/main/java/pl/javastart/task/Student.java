@@ -1,5 +1,7 @@
 package pl.javastart.task;
 
+import java.util.Arrays;
+
 public class Student {
     private int index;
     private String firstName;
@@ -16,13 +18,40 @@ public class Student {
         }
     }
 
-    void addGrade(Grade grade) {
+    private void addGroups(Group group) {
+        for (int i = 0; i < groups.length; i++) {
+            if (groups[i] == null) {
+                groups[i] = group;
+                break;
+            }
+        }
+    }
+
+    void addGroup(Group group) {
+        if (groups[groups.length - 1] != null) {
+            groups = Arrays.copyOf(groups, groups.length * 2);
+        }
+        addGroups(group);
+    }
+
+    private void addGrades(Grade grade) {
         for (int i = 0; i < grades.length; i++) {
             if (grades[i] == null) {
                 grades[i] = grade;
                 break;
             }
         }
+    }
+
+    void printInfo() {
+        System.out.println(index + " " + firstName + " " + lastName);
+    }
+
+    void addGrade(Grade grade) {
+        if (grades[grades.length - 1] != null) {
+            groups = Arrays.copyOf(groups, groups.length * 2);
+        }
+        addGrades(grade);
     }
 
     Student(int index, String firstName, String lastName) {
