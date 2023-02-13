@@ -9,6 +9,12 @@ public class Student {
     private Grade[] grades = new Grade[10];
     private Group[] groups = new Group[10];
 
+    Student(int index, String firstName, String lastName) {
+        this.index = index;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public void printGrades() {
         for (Grade grade : grades) {
             if (grade != null && grade.getGrade() != 0) {
@@ -18,7 +24,14 @@ public class Student {
         }
     }
 
-    private void addGroups(Group group) {
+    private void ensureGroupCapacity() {
+        if (groups[groups.length - 1] != null) {
+            groups = Arrays.copyOf(groups, groups.length * 2);
+        }
+    }
+
+    void addGroup(Group group) {
+        ensureGroupCapacity();
         for (int i = 0; i < groups.length; i++) {
             if (groups[i] == null) {
                 groups[i] = group;
@@ -27,14 +40,14 @@ public class Student {
         }
     }
 
-    void addGroup(Group group) {
-        if (groups[groups.length - 1] != null) {
+    private void ensureGradesCapacity() {
+        if (grades[grades.length - 1] != null) {
             groups = Arrays.copyOf(groups, groups.length * 2);
         }
-        addGroups(group);
     }
 
-    private void addGrades(Grade grade) {
+    void addGrade(Grade grade) {
+        ensureGradesCapacity();
         for (int i = 0; i < grades.length; i++) {
             if (grades[i] == null) {
                 grades[i] = grade;
@@ -43,21 +56,8 @@ public class Student {
         }
     }
 
-    void printInfo() {
-        System.out.println(index + " " + firstName + " " + lastName);
-    }
-
-    void addGrade(Grade grade) {
-        if (grades[grades.length - 1] != null) {
-            groups = Arrays.copyOf(groups, groups.length * 2);
-        }
-        addGrades(grade);
-    }
-
-    Student(int index, String firstName, String lastName) {
-        this.index = index;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    String getInfo() {
+        return index + " " + firstName + " " + lastName;
     }
 
     int getIndex() {

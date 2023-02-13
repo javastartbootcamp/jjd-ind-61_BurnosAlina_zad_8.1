@@ -125,20 +125,20 @@ public class UniversityApp {
         }
     }
 
-    private void addStudent(Student student) {
+    private void ensureStudentsCapacity() {
+        if (students[students.length - 1] != null) {
+            students = Arrays.copyOf(students, students.length * 2);
+        }
+    }
+
+    private void addStudentToStudentList(Student student) {
+        ensureStudentsCapacity();
         for (int i = 0; i < students.length; i++) {
             if (students[i] == null) {
                 students[i] = student;
                 break;
             }
         }
-    }
-
-    private void addStudentToStudentList(Student student) {
-        if (students[students.length - 1] != null) {
-            students = Arrays.copyOf(students, students.length * 2);
-        }
-        addStudent(student);
     }
 
     /**
@@ -197,20 +197,20 @@ public class UniversityApp {
         }
     }
 
-    private void addGradeToList(Grade grade) {
+    private void ensureGradesCapacity() {
+        if (grades[grades.length - 1] != null) {
+            grades = Arrays.copyOf(grades, grades.length * 2);
+        }
+    }
+
+    private void addGradeToGradeList(Grade grade) {
+        ensureGradesCapacity();
         for (int i = 0; i < grades.length; i++) {
             if (grades[i] == null) {
                 grades[i] = grade;
                 break;
             }
         }
-    }
-
-    private void addGradeToGradeList(Grade grade) {
-        if (grades[grades.length - 1] != null) {
-            grades = Arrays.copyOf(grades, grades.length * 2);
-        }
-        addGradeToList(grade);
     }
 
     private boolean isGradeAlreadyExist(Student student, Group group) {
@@ -276,6 +276,10 @@ public class UniversityApp {
      */
 
     public void printAllStudents() {
-        for (Student student : students) if (student != null) student.printInfo();
+        for (Student student : students) {
+            if (student != null) {
+                System.out.println(student.getInfo());
+            }
+        }
     }
 }

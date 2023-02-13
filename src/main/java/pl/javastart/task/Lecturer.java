@@ -13,6 +13,10 @@ public class Lecturer {
         this.lastName = lastName;
     }
 
+    String getInfo() {
+        return degree + " " + firstName + " " + lastName;
+    }
+
     int getId() {
         return id;
     }
