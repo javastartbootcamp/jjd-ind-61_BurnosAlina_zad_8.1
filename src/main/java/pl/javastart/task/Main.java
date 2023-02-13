@@ -1,5 +1,7 @@
 package pl.javastart.task;
 
+import java.util.Arrays;
+
 public class Main {
 
     // uzupełnij metody w UniversityApp zgodnie z dokumentacją
@@ -12,11 +14,9 @@ public class Main {
         universityApp.addStudentToGroup(179128, "pp-2022", "Marcin", "Abacki");
         universityApp.addStudentToGroup(179129, "pp-2022", "Adam", "Browarski");
         universityApp.printAllStudents();
-
         universityApp.addGrade(179128, "pp-2022", 5);
         universityApp.addGrade(179129, "pp-2022", 5);
         universityApp.addGrade(179128, "po-2022", 5.5);
-
         universityApp.printGroupInfo("pp-2022");
         universityApp.printGradesForStudent(179128);
         universityApp.printGradesForGroup("pp-2022");
